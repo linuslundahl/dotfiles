@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+cd $HOME/my-home/dotfiles/.zprezto
+git fetch original
+CHANGES=`git log --format=medium master..origin/master`
+git rebase original/master
+echo
+echo "Changes since last update:"
+echo "--------------------------"
+echo "$CHANGES"

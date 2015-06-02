@@ -1,0 +1,59 @@
+# Set PROJECT_DIR to the path where your projects exist,
+[[ -z "$PROJECT_DIR" ]] && export PROJECT_DIR=~/Sites
+
+# Set Sublime Text 2 as default editor
+export EDITOR='subl -w'
+
+# Set homebew cask options
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/Users/linus/dotfiles/Caskroom"
+
+# Initiate go
+# eval "$(/Users/linus/dotfiles/go/bin/goodold init -)"
+
+# Use PHP55
+export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+
+# Paths
+PATH=$PATH:$HOME/.node/bin
+PATH=$PATH:$HOME/.go/bin
+PATH=$PATH:$HOME/.composer/vendor/bin
+PATH=$PATH:$HOME/dotfiles/bin
+PATH=$PATH:$HOME/dotfiles/apps/bin
+
+# Node path
+export NODE_PATH=$HOME/.node/lib/node_modules
+
+# Go path
+export GOPATH=$HOME/.go
+
+# Import RVM
+# [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
+# Import aliases
+[[ -f $HOME/dotfiles/zsh/aliases ]] && source $HOME/dotfiles/zsh/aliases
+
+# Import functions
+[[ -f $HOME/dotfiles/zsh/functions ]] && source $HOME/dotfiles/zsh/functions
+
+# K for zsh
+[[ -f $HOME/dotfiles/apps/k/k.sh ]] && source $HOME/dotfiles/apps/k/k.sh
+
+
+# Bash completion
+autoload bashcompinit
+bashcompinit
+source /usr/local/etc/bash_completion.d/gibo-completion.bash
+source /usr/local/etc/bash_completion.d/wp-completion.bash
+source /usr/local/etc/bash_completion.d/youtube-dl.bash-completion
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# npm completion workaround
+eval "`npm completion`"
+
+# z
+. `brew --prefix`/etc/profile.d/z.sh
+
+# RBENV
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# tmux attach || tmux new

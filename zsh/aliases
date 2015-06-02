@@ -1,0 +1,69 @@
+# Aliases
+alias phplog="open ~/Library/Logs/php.log"
+alias apache2ctl='sudo apachectl'
+alias colors='python ~/my-home/bin/colors.py --terse'
+alias gox="chmod u+x $HOME/my-home/go/libexec/go-*"
+alias week='date "+%V"'
+alias givaktbot='cd ~/Sites/_tools/bot/ && ~/Sites/_tools/gobot/bin/hubot --name bot'
+# alias progressive="identify -verbose $1 | grep Interlace"
+alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
+alias fuck='$(thefuck $(fc -ln -1))'
+
+# Shortcuts
+alias c='clear'
+alias s='subl .'
+alias o='open .'
+alias g="grep -r -i"
+alias cp="cp -rv"
+
+# Listing
+alias lsa='ls -al'                 # List all files with info
+alias ls.='ls -ald .*'             # List hidden files only
+alias lsd='ls -Gl | grep ^d'       # Only list directories
+alias lsd.='ls -Gal | grep ^d'     # Only list directories, including hidden ones
+alias lsbd='ls -thor'              # List dir contents by modified date
+alias lscf='/bin/ls -rt|tail -n1'  # Last changed file
+alias lsr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'''
+
+# Zshell
+alias zs='source $HOME/.zshrc'
+alias ze='subl $HOME/.zshrc'
+alias to_bash='chsh -s "$(which bash)"'
+
+# Drush
+alias d='drush -y'
+alias dcc='drush cc all && date +"%T" && terminal-notifier -message "Drupal cache cleared"'
+alias ddl='drush pm-download'
+alias dun='drush pm-uninstall'
+alias den='drush pm-enable'
+alias dsolr='drush solr-delete-index | drush solr-index && terminal-notifier -message "Solr re-indexed"'
+
+# Bower
+alias bower='noglob bower'
+
+# Simple Python server
+alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
+
+# Updating
+alias bup='brew update && brew upgrade --all && brew cleanup'  # Homebrew
+alias gup='sudo gem update && sudo gem cleanup'          # Ruby gems
+alias nup='sudo npm update -g'                           # NPM
+alias osxup='sudo softwareupdate -ia'                    # OS X
+alias allup='gup && nup && bup'
+
+# Drupal
+alias d7_cobalt='drush dis toolbar -y && drush dis overlay -y && drush dl cobalt -y && drush en cobalt -y && terminal-notifier -message "Drupal 7 is now Cobalted"'
+
+# Git
+alias gfp='git push origin master --tags && git push origin develop'
+alias gcf="git commit --fixup"
+alias gri="git rebase --interactive --autosquash"
+alias grid="git rebase --interactive --autosquash origin/develop"
+alias grim="git rebase --interactive --autosquash origin/master"
+alias r='cd "$(git rev-parse --show-toplevel)"' # Poor mans reverse()
+
+# OS X
+alias rebuildlsdb='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder' #Rebuild Launch Services Database
+alias dropboxwatch='sudo fs_usage | grep ~/Dropbox'
+alias ql="qlmanage -p"
+alias ringtone="afconvert $1 $2 -f m4af"

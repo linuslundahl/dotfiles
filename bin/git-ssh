@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+#
+# GIT SSH
+# Author: Linus Lundahl, http://unwi.se/
+#
+# A simple script that makes it easier to ssh to your git remotes.
+# Opens an ssh-connection and cd's to the correct path of the git-repo.
+#
+# Usage: git-ssh REMOTE
+#
+# Tip: Add a git alias for muscle memory purposes
+# $ git config --global alias.ssh "!git-ssh $1"
+# Now use: git ssh REMOTE
+#
+
+if [ $# -eq 0 ];then
+  echo "No arguments found, trying with 'live'."
+  set live
+fi
+
+REMOTE=$(git config --get remote.${1}.url);
+
+if [ "$REMOTE" != "" ];then
+  read SERVER SERVER_PATH <<<$(IFS=":"; echo $REMOTE)
+  ssh -t $SERVER "cd $SERVER_PATH; exec bash -l"
+else
+  echo 'No remote found.'
+fi
