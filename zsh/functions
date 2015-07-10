@@ -1,25 +1,25 @@
 # Various functions
-h() {cd ~/$1;}
+function h() {cd ~/$1;}
 compctl -M 'm:{a-zA-Z}={A-Za-z}' -W ~/ -/ h
 
 # Fun
-snow() {ruby -e 'C=`stty size`.scan(/\d+/)[1].to_i;S=["2743".to_i(16)].pack("U*");a={};puts "\033[2J";loop{a[rand(C)]=0;a.each{|x,o|;a[x]+=1;print "\033[#{o};#{x}H \033[#{a[x]};#{x}H#{S} \033[0;0H"};$stdout.flush;sleep 0.1}'}
-starwars() {telnet towel.blinkenlights.nl}
+function snow() {ruby -e 'C=`stty size`.scan(/\d+/)[1].to_i;S=["2743".to_i(16)].pack("U*");a={};puts "\033[2J";loop{a[rand(C)]=0;a.each{|x,o|;a[x]+=1;print "\033[#{o};#{x}H \033[#{a[x]};#{x}H#{S} \033[0;0H"};$stdout.flush;sleep 0.1}'}
+function starwars() {telnet towel.blinkenlights.nl}
 
 # Drupal
-ddle() {drush -y dl $1 && drush -y en $1;}
-_drush () {compadd `drush --early=includes/complete.inc "$words[@]" < /dev/null`}
+function ddle() {drush -y dl $1 && drush -y en $1;}
+function _drush () {compadd `drush --early=includes/complete.inc "$words[@]" < /dev/null`}
 compdef _drush drush
 
 # Copy absolute filepath.
-pwdc() {echo -n "$PWD/$1" | pbcopy}
+function pwdc() {echo -n "$PWD/$1" | pbcopy}
 
 # Get image dimensions
-dim(){ sips $1 -g pixelWidth -g pixelHeight }
+function dim(){ sips $1 -g pixelWidth -g pixelHeight }
 
 # Project dir functions
-pd() {cd $PROJECT_DIR/$1/$2}                                   # root in project
-pp() {cd $PROJECT_DIR/$1/$2/public_html}                       # public_html in project
+function pd() {cd $PROJECT_DIR/$1/$2}                                   # root in project
+function pp() {cd $PROJECT_DIR/$1/$2/public_html}                       # public_html in project
 # sublp() {subl $PROJECT_DIR/$1}
 # sublw() {subl $PROJECT_DIR/$1/public_html/wp-content}
 # subld() {subl $PROJECT_DIR/$1/public_html/sites/all}
@@ -28,19 +28,19 @@ pp() {cd $PROJECT_DIR/$1/$2/public_html}                       # public_html in 
 compctl -W $PROJECT_DIR -/ pd pp
 
 # Logs
-log-clear() {echo '' >! ~/Library/Logs/$1;echo $1 was cleared.;}
-log-tail() {tail -f ~/Library/Logs/$1;}
-log-open() {open ~/Library/Logs/$1;}
+function log-clear() {echo '' >! ~/Library/Logs/$1;echo $1 was cleared.;}
+function log-tail() {tail -f ~/Library/Logs/$1;}
+function log-open() {open ~/Library/Logs/$1;}
 compctl -W ~/Library/logs/ -f log-clear log-tail log-open
 
 # List most used commands
-his() {history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -10}
+function his() {history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -10}
 
 # Find text in any file
-ft() {find . -name "$2" -exec grep -il "$1" {} \;}
+function ft() {find . -name "$2" -exec grep -il "$1" {} \;}
 
 # SQL import using pv
-sqlimport() {
+function sqlimport() {
   FILE=$1
   if [ $3 ]; then
     USER=$2
@@ -54,7 +54,7 @@ sqlimport() {
 }
 
 # List all aliases available
-listaliases() {
+function listaliases() {
   COMMANDS=`echo -n $PATH | xargs : -I {} find {} -maxdepth 1 \
     -executable -type f -printf '%P\n'`
   ALIASES=`alias | cut -d '=' -f 1`
@@ -62,7 +62,7 @@ listaliases() {
 }
 
 # Extract most know archives with one command
-extract() {
+function extract() {
   if [ -f $1 ] ; then
     case $1 in
       *.tar.bz2)   tar xjf $1     ;;
@@ -84,7 +84,7 @@ extract() {
 }
 
 # Go back x directories
-dc() {
+function dc() {
   str=""
   count=0
   while [ "$count" -lt "$1" ];
@@ -96,7 +96,7 @@ dc() {
 }
 
 # Pretty print json
-pjson() {
+function pjson() {
   if [ $# -gt 0 ];
     then
     for arg in $@
@@ -135,4 +135,8 @@ function 64enc() {
 function transfer() {
   # write to output to tmpfile because of progress bar
   tmpfile=$( mktemp -t transferXXX ); curl --progress-bar --upload-file $1 https://transfer.sh/$(basename $1) >> $tmpfile; cat $tmpfile; rm -f $tmpfile;
+}
+
+function b64() {
+  cat $1 | base64 | pbcopy;
 }
