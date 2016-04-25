@@ -8,6 +8,7 @@ alias givaktbot='cd ~/Sites/_tools/bot/ && ~/Sites/_tools/gobot/bin/hubot --name
 # alias progressive="identify -verbose $1 | grep Interlace"
 alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 alias fuck='$(thefuck $(fc -ln -1))'
+alias t='tree -I ".git|node_modules|bower_components|.sass-cache|.DS_Store" --dirsfirst --filelimit 15 -L ${1:-3} -aC $2'
 
 # Shortcuts
 alias c='clear'
@@ -46,9 +47,9 @@ alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 
 # Updating
 alias bup='brew update && brew upgrade --all && brew cleanup'  # Homebrew
-alias gup='sudo gem update && sudo gem cleanup'          # Ruby gems
-alias nup='sudo npm update -g'                           # NPM
-alias osxup='sudo softwareupdate -ia'                    # OS X
+alias gup='sudo gem update && sudo gem cleanup'                # Ruby gems
+alias nup='sudo npm update -g'                                 # NPM
+alias osxup='sudo softwareupdate -ia'                          # OS X
 alias allup='gup && nup && bup'
 
 # Drupal
@@ -67,3 +68,5 @@ alias rebuildlsdb='/System/Library/Frameworks/CoreServices.framework/Versions/A/
 alias dropboxwatch='sudo fs_usage | grep ~/Dropbox'
 alias ql="qlmanage -p"
 alias ringtone="afconvert $1 $2 -f m4af"
+alias verifypermissions="sudo /usr/libexec/repair_packages --verify --standard-pkgs /"
+alias repairpermissions="sudo /usr/libexec/repair_packages --repair --standard-pkgs --volume /"

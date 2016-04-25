@@ -1,20 +1,27 @@
-# Set PROJECT_DIR to the path where your projects exist,
+# Set PROJECT_DIR to the path where your projects exist.
 [[ -z "$PROJECT_DIR" ]] && export PROJECT_DIR=~/Sites
 
-# Set Sublime Text 2 as default editor
-export EDITOR='subl -w'
+# Set Atom as default editor
+export EDITOR="atom"
+
+export ATOM_PATH="/Users/linus/dotfiles/Caskroom/atom/1.2.4"
 
 # Set homebew cask options
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/Users/linus/dotfiles/Caskroom"
+# export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/opt/Caskroom"
 
 # Initiate go
 # eval "$(/Users/linus/dotfiles/go/bin/goodold init -)"
 
-# Use PHP55
-export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+# Use PHP56
+# export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+
+# Use PHP70
+export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
 
 # Paths
 PATH=$PATH:$HOME/.node/bin
+PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
 PATH=$PATH:$HOME/.go/bin
 PATH=$PATH:$HOME/.composer/vendor/bin
 PATH=$PATH:$HOME/dotfiles/bin
@@ -22,6 +29,10 @@ PATH=$PATH:$HOME/dotfiles/apps/bin
 
 # Node path
 export NODE_PATH=$HOME/.node/lib/node_modules
+
+# Gem path
+export GEM_HOME=$HOME/.gem/ruby/2.3.0
+export GEM_PATH=$HOME/.gem/ruby/2.3.0
 
 # Go path
 export GOPATH=$HOME/.go
@@ -57,3 +68,5 @@ eval "`npm completion`"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # tmux attach || tmux new
+
+[[ -s "${HOME}/.a-fiend/source.sh" ]] && source $HOME/.a-fiend/source.sh

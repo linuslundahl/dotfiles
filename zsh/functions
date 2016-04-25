@@ -1,25 +1,25 @@
 # Various functions
-function h() {cd ~/$1;}
+function h() { cd ~/$1; }
 compctl -M 'm:{a-zA-Z}={A-Za-z}' -W ~/ -/ h
 
 # Fun
-function snow() {ruby -e 'C=`stty size`.scan(/\d+/)[1].to_i;S=["2743".to_i(16)].pack("U*");a={};puts "\033[2J";loop{a[rand(C)]=0;a.each{|x,o|;a[x]+=1;print "\033[#{o};#{x}H \033[#{a[x]};#{x}H#{S} \033[0;0H"};$stdout.flush;sleep 0.1}'}
-function starwars() {telnet towel.blinkenlights.nl}
+function snow() { ruby -e 'C=`stty size`.scan(/\d+/)[1].to_i;S=["2743".to_i(16)].pack("U*");a={};puts "\033[2J";loop{a[rand(C)]=0;a.each{|x,o|;a[x]+=1;print "\033[#{o};#{x}H \033[#{a[x]};#{x}H#{S} \033[0;0H"};$stdout.flush;sleep 0.1}'; }
+function starwars() { telnet towel.blinkenlights.nl; }
 
 # Drupal
-function ddle() {drush -y dl $1 && drush -y en $1;}
-function _drush () {compadd `drush --early=includes/complete.inc "$words[@]" < /dev/null`}
+function ddle() { drush -y dl $1 && drush -y en $1; }
+function _drush () { compadd `drush --early=includes/complete.inc "$words[@]" < /dev/null`; }
 compdef _drush drush
 
 # Copy absolute filepath.
-function pwdc() {echo -n "$PWD/$1" | pbcopy}
+function pwdc() { echo -n "$PWD/$1" | pbcopy; }
 
 # Get image dimensions
-function dim(){ sips $1 -g pixelWidth -g pixelHeight }
+function dim() { sips $1 -g pixelWidth -g pixelHeight; }
 
 # Project dir functions
-function pd() {cd $PROJECT_DIR/$1/$2}                                   # root in project
-function pp() {cd $PROJECT_DIR/$1/$2/public_html}                       # public_html in project
+function pd() { cd $PROJECT_DIR/$1/$2; }                                   # root in project
+function pp() { cd $PROJECT_DIR/$1/$2/public_html; }                       # public_html in project
 # sublp() {subl $PROJECT_DIR/$1}
 # sublw() {subl $PROJECT_DIR/$1/public_html/wp-content}
 # subld() {subl $PROJECT_DIR/$1/public_html/sites/all}
@@ -28,16 +28,16 @@ function pp() {cd $PROJECT_DIR/$1/$2/public_html}                       # public
 compctl -W $PROJECT_DIR -/ pd pp
 
 # Logs
-function log-clear() {echo '' >! ~/Library/Logs/$1;echo $1 was cleared.;}
-function log-tail() {tail -f ~/Library/Logs/$1;}
-function log-open() {open ~/Library/Logs/$1;}
+function log-clear() { echo '' >! ~/Library/Logs/$1;echo $1 was cleared.; }
+function log-tail() { tail -f ~/Library/Logs/$1; }
+function log-open() { open ~/Library/Logs/$1; }
 compctl -W ~/Library/logs/ -f log-clear log-tail log-open
 
 # List most used commands
-function his() {history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -10}
+function his() { history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -10; }
 
 # Find text in any file
-function ft() {find . -name "$2" -exec grep -il "$1" {} \;}
+function ft() { find . -name "$2" -exec grep -il "$1" {}; }
 
 # SQL import using pv
 function sqlimport() {
@@ -112,19 +112,13 @@ function pjson() {
 }
 
 # Install a grunt plugin and save to devDependencies
-function gi() {
-  npm install --save-dev grunt-"$@"
-}
+function gi() { npm install --save-dev grunt-"$@"; }
 
 # Install a grunt-contrib plugin and save to devDependencies
-function gci() {
-  npm install --save-dev grunt-contrib-"$@"
-}
+function gci() { npm install --save-dev grunt-contrib-"$@"; }
 
 # Start a simple server in current directory
-function serve() {
-  python -m SimpleHTTPServer ${1:-8080}
-}
+function serve() { python -m SimpleHTTPServer ${1:-8080}; }
 
 # Encode a given image file as base64 and output to clipboard
 function 64enc() {
@@ -132,11 +126,21 @@ function 64enc() {
   echo "$1 encoded to clipboard"
 }
 
-function transfer() {
-  # write to output to tmpfile because of progress bar
-  tmpfile=$( mktemp -t transferXXX ); curl --progress-bar --upload-file $1 https://transfer.sh/$(basename $1) >> $tmpfile; cat $tmpfile; rm -f $tmpfile;
-}
+# write to output to tmpfile because of progress bar
+function transfer() { tmpfile=$( mktemp -t transferXXX ); curl --progress-bar --upload-file $1 https://transfer.sh/$(basename $1) >> $tmpfile; cat $tmpfile; rm -f $tmpfile; }
 
-function b64() {
-  cat $1 | base64 | pbcopy;
+function b64() { cat $1 | base64 | pbcopy; }
+
+# Helper to loop through directories and merge:
+# for dir in $(find . -type d -maxdepth 1 -not -path .); do cd $dir && mergevideo && cd ..; done
+function mergevideo() {
+  touch files.txt && touch files-2.txt;
+  ls *.avi | while read each; do echo "file '$each'" >> files.txt; done;
+  ls *.avi | while read each; do echo "$each" >> files-2.txt; done;
+  ffmpeg -f concat -i files.txt -c copy ${PWD##*/}.avi;
+  if [ -e "${PWD##*/}.avi" ]
+  then
+    while read file; do \rm "$file"; done <files-2.txt
+  fi
+  \rm files.txt && \rm files-2.txt;
 }

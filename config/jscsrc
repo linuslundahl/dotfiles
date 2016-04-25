@@ -1,4 +1,12 @@
 {
   "preset": "jquery",
-  "requireCurlyBraces": null
+  "requireCurlyBraces": null,
+  "validateQuoteMarks": "'",
+  "requireSpacesInsideBrackets": false,
+  "requireSpacesInsideParentheses": false,
+  "disallowSpacesInAnonymousFunctionExpression": false,
+  "disallowSpacesInFunctionExpression": false,
+  "requirePaddingNewLinesBeforeLineComments": false,
+  "disallowSpaceAfterObjectKeys": false
+
 }
