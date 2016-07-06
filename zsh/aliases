@@ -42,6 +42,12 @@ alias dsolr='drush solr-delete-index | drush solr-index && terminal-notifier -me
 # Bower
 alias bower='noglob bower'
 
+# Node
+alias nb="clear && node . | bunyan"
+alias nm="clear && nodemon -e js,json,jsx,ejs,coffee ."
+alias nbm="clear && nodemon -e js,json,jsx,ejs,coffee . | bunyan"
+alias nbmw="clear && nodemon -e js,json,jsx,ejs,coffee . | bunyan -l warn"
+
 # Simple Python server
 alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 
