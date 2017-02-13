@@ -1,0 +1,11 @@
+#!/bin/bash
+
+curl wttr.in/malmö
+# LOC="$1"
+# DEG="$2"
+# : ${LOC:="Malmo, Sweden"}
+# : ${DEG:="C"}
+# # HTML encode string as %20
+# LOCATION=$(sed -e "s/ /%20/g" <<<"$LOC")
+# content=$(curl -sS "https://f.stdlib.com/thisdavej/weather/current?loc=$LOCATION&deg=$DEG")
+# echo $content | jq .

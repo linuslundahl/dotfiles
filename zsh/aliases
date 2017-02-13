@@ -24,7 +24,8 @@ alias lsd='ls -Gl | grep ^d'       # Only list directories
 alias lsd.='ls -Gal | grep ^d'     # Only list directories, including hidden ones
 alias lsbd='ls -thor'              # List dir contents by modified date
 alias lscf='/bin/ls -rt|tail -n1'  # Last changed file
-alias lsr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'''
+alias ls-tree='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\''' # List as tree
+alias ls-size='du -sk -- * | sort -n | perl -pe '\''@SI=qw(K M G T P); s:^(\d+?)((\d\d\d)*)\s:$1." ".$SI[((length $2)/3)]."\t":e'\''' # List with size
 
 # Zshell
 alias zs='source $HOME/.zshrc'
@@ -52,9 +53,9 @@ alias nbmw="clear && nodemon -e js,json,jsx,ejs,coffee . | bunyan -l warn"
 alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 
 # Updating
-alias bup='brew update && brew upgrade --all && brew cleanup'  # Homebrew
-alias gup='sudo gem update && sudo gem cleanup'                # Ruby gems
-alias nup='sudo npm update -g'                                 # NPM
+alias bup='brew update && brew upgrade && brew cleanup'  # Homebrew
+alias gup='gem update && gem cleanup'                # Ruby gems
+alias nup='npm update -g'                                 # NPM
 alias osxup='sudo softwareupdate -ia'                          # OS X
 alias allup='gup && nup && bup'
 
