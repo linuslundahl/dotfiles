@@ -1,14 +1,16 @@
+#!/bin/sh
+
 # Aliases
 alias phplog="open ~/Library/Logs/php.log"
 alias apache2ctl='sudo apachectl'
 alias colors='python ~/my-home/bin/colors.py --terse'
-alias gox="chmod u+x $HOME/my-home/go/libexec/go-*"
+alias gox='chmod u+x $HOME/my-home/go/libexec/go-*'
 alias week='date "+%V"'
 alias givaktbot='cd ~/Sites/_tools/bot/ && ~/Sites/_tools/gobot/bin/hubot --name bot'
 # alias progressive="identify -verbose $1 | grep Interlace"
 alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 alias fuck='$(thefuck $(fc -ln -1))'
-alias t='tree -I ".git|node_modules|bower_components|.sass-cache|.DS_Store" --dirsfirst --filelimit 15 -L ${1:-3} -aC $2'
+
 
 # Shortcuts
 alias c='clear'
@@ -25,7 +27,6 @@ alias lsd.='ls -Gal | grep ^d'     # Only list directories, including hidden one
 alias lsbd='ls -thor'              # List dir contents by modified date
 alias lscf='/bin/ls -rt|tail -n1'  # Last changed file
 alias ls-tree='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\''' # List as tree
-alias ls-size='du -sk -- * | sort -n | perl -pe '\''@SI=qw(K M G T P); s:^(\d+?)((\d\d\d)*)\s:$1." ".$SI[((length $2)/3)]."\t":e'\''' # List with size
 
 # Zshell
 alias zs='source $HOME/.zshrc'
@@ -53,10 +54,10 @@ alias nbmw="clear && nodemon -e js,json,jsx,ejs,coffee . | bunyan -l warn"
 alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 
 # Updating
-alias bup='brew update && brew upgrade && brew cleanup'  # Homebrew
-alias gup='gem update && gem cleanup'                # Ruby gems
-alias nup='npm update -g'                                 # NPM
-alias osxup='sudo softwareupdate -ia'                          # OS X
+alias bup='brew update && brew upgrade && brew cleanup' # Homebrew
+alias gup='gem update && gem cleanup'                   # Ruby gems
+alias nup='npm update -g'                               # NPM
+alias osxup='sudo softwareupdate -ia'                   # OS X
 alias allup='gup && nup && bup'
 
 # Drupal
@@ -74,6 +75,5 @@ alias r='cd "$(git rev-parse --show-toplevel)"' # Poor mans reverse()
 alias rebuildlsdb='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder' #Rebuild Launch Services Database
 alias dropboxwatch='sudo fs_usage | grep ~/Dropbox'
 alias ql="qlmanage -p"
-alias ringtone="afconvert $1 $2 -f m4af"
 alias verifypermissions="sudo /usr/libexec/repair_packages --verify --standard-pkgs /"
 alias repairpermissions="sudo /usr/libexec/repair_packages --repair --standard-pkgs --volume /"

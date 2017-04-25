@@ -1,72 +1,54 @@
+#!/bin/sh
+
+# ssh-add -K ~/.ssh/id_rsa
+
+# Source zim
+if [ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]; then
+  # shellcheck source=/.zim/init.zsh
+  . ${ZDOTDIR:-${HOME}}/.zim/init.zsh
+fi
+
+zstyle ':vcs_info:git:*:-all-' command =git
+
 # Set PROJECT_DIR to the path where your projects exist.
-[[ -z "$PROJECT_DIR" ]] && export PROJECT_DIR=~/Sites
+[ -z "$PROJECT_DIR" ] && export PROJECT_DIR=~/Sites
 
 # Set Atom as default editor
 export EDITOR="atom"
-
-export ATOM_PATH="/Users/linus/dotfiles/Caskroom/atom/1.2.4"
+export ATOM_PATH="/Applications"
 
 # Set homebew cask options
-export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/Users/linus/dotfiles/Caskroom"
-# export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/opt/Caskroom"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=$HOME/Caskroom"
 
-# Initiate go
-# eval "$(/Users/linus/dotfiles/go/bin/goodold init -)"
-
-# Use PHP56
-# export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
-
-# Use PHP70
-export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
+# Use PHP71
+export PATH
+PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
 
 # Paths
-PATH=$PATH:$HOME/.node/bin
-PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
-PATH=$PATH:$HOME/.go/bin
-PATH=$PATH:$HOME/.composer/vendor/bin
+PATH=$PATH:$HOME/go/bin
+PATH=$PATH:/usr/local/opt/go/libexec/bin
 PATH=$PATH:$HOME/dotfiles/bin
 PATH=$PATH:$HOME/dotfiles/apps/bin
 
-# Node path
-export NODE_PATH=$HOME/.node/lib/node_modules
-
-# Gem path
-export GEM_HOME=$HOME/.gem/ruby/2.3.0
-export GEM_PATH=$HOME/.gem/ruby/2.3.0
-
 # Go path
-export GOPATH=$HOME/.go
-
-# Import RVM
-# [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
-# Import aliases
-[[ -f $HOME/dotfiles/zsh/aliases ]] && source $HOME/dotfiles/zsh/aliases
-
-# Import functions
-[[ -f $HOME/dotfiles/zsh/functions ]] && source $HOME/dotfiles/zsh/functions
-
-# K for zsh
-[[ -f $HOME/dotfiles/apps/k/k.sh ]] && source $HOME/dotfiles/apps/k/k.sh
-
+export GOPATH=$HOME/go
 
 # Bash completion
 autoload bashcompinit
 bashcompinit
-source /usr/local/etc/bash_completion.d/gibo-completion.bash
-source /usr/local/etc/bash_completion.d/wp-completion.bash
-source /usr/local/etc/bash_completion.d/youtube-dl.bash-completion
-fpath=(/usr/local/share/zsh-completions $fpath)
+. /usr/local/etc/bash_completion.d/wp-completion.bash
+# . /usr/local/etc/bash_completion.d/youtube-dl.bash-completion
+# fpath=(/usr/local/share/zsh-completions $fpath)
 
-# npm completion workaround
-eval "`npm completion`"
+# Node
+export NVM_DIR="$HOME/.nvm"
+export NODE_ENV="development"
 
-# z
-. `brew --prefix`/etc/profile.d/z.sh
+# shellcheck source=src/nvm.sh
+. "$(brew --prefix nvm)/nvm.sh"
 
-# RBENV
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# shellcheck source=$HOME/dotfiles/zsh/aliases
+[ -f $HOME/dotfiles/zsh/aliases ] && . $HOME/dotfiles/zsh/aliases
 
-# tmux attach || tmux new
-
-[[ -s "${HOME}/.a-fiend/source.sh" ]] && source $HOME/.a-fiend/source.sh
+# shellcheck source=$HOME/dotfiles/zsh/functions
+[ -f $HOME/dotfiles/zsh/functions ] && . $HOME/dotfiles/zsh/functions
