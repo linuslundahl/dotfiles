@@ -4,17 +4,24 @@
 
 export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
-# Paths
-PATH=$PATH:/usr/local/bin
-PATH=$PATH:$HOME/go/bin
-PATH=$PATH:/usr/local/opt/go/libexec/bin
-PATH=$PATH:$HOME/dotfiles/bin
-PATH=$PATH:$HOME/dotfiles/apps/bin
-
 # shellcheck source=$HOME/.zim/init.zsh
 [ -f ${ZIM_HOME}/init.zsh ] && . ${ZIM_HOME}/init.zsh
 
 zstyle ':vcs_info:git:*:-all-' command =git
+
+# Paths
+export PATH
+PATH="/usr/local/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
+PATH="/usr/local/opt/go/libexec/bin:$PATH"
+PATH="$HOME/dotfiles/bin:$PATH"
+PATH="$HOME/dotfiles/apps/bin:$PATH"
+
+# Use PHP71
+PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
+
+# Go path
+export GOPATH=$HOME/go
 
 # Set PROJECT_DIR to the path where your projects exist.
 [ -z "$PROJECT_DIR" ] && export PROJECT_DIR=~/Sites
@@ -26,13 +33,6 @@ export ATOM_PATH="/Applications"
 # Set homebew cask options
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --fontdir=/Library/Fonts"
 
-# Use PHP71
-export PATH
-PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
-
-# Go path
-export GOPATH=$HOME/go
-
 # Bash completion
 autoload bashcompinit
 bashcompinit
@@ -42,8 +42,6 @@ bashcompinit
 
 # Node
 export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export NODE_ENV="development"
 
 # shellcheck source=/usr/local/opt/nvm/nvm.sh
