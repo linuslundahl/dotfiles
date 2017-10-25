@@ -1,0 +1,10 @@
+#!/usr/local/bin/python
+import jwt
+import sys
+import json
+
+#jwt.decode(sys.argv[1], 'secret', algorithms=['HS256'])
+print(json.dumps(jwt.decode(sys.argv[1].strip("\""), verify=False),
+                  sort_keys=True,
+                  indent=4,
+                  separators=(',', ': '))) #, 'secret', algorithms=['HS256'])

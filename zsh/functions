@@ -160,6 +160,6 @@ t() {
 # List with size
 lssize() { du -sk -- * | sort -n | perl -pe \''@SI=qw(K M G T P); s:^(\d+?)((\d\d\d)*)\s:$1." ".$SI[((length $2)/3)]."\t":e'\'; }
 
-ringtone() { afconvert "$1" "$2" -f m4af; }
+ringtone() { afconvert "$1" "${1%.*}.m4r" -f m4af; }
 gif2webm() { ffmpeg -i "$1" -b:v 600K -qmin 0 -qmax 50 -crf 5 "$2"; }
 giflossy2() { gifsicle -O3 --lossy=80 -o "$2" "$1"; }

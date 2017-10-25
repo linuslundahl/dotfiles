@@ -10,20 +10,23 @@ alias givaktbot='cd ~/Sites/_tools/bot/ && ~/Sites/_tools/gobot/bin/hubot --name
 # alias progressive="identify -verbose $1 | grep Interlace"
 alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 alias fuck='$(thefuck $(fc -ln -1))'
-
+alias mff='curl http://malmo.unwi.se/ascii/'
+alias op-ll='eval $(op signin linuslundahl)'
+alias op-hds='eval $(op signin hdsit)'
 
 # Shortcuts
 alias c='clear'
-alias s='subl .'
 alias o='open .'
 alias g="grep -r -i"
 alias cp="cp -rv"
+alias edit='atom-beta'
+alias consul-start='consul agent -server -data-dir . -bootstrap-expect 1 -ui -advertise 127.0.0.1'
 
 # Listing
-alias lsa='ls -al'                 # List all files with info
+alias lsa='ls -alhF'               # List all files with info
 alias ls.='ls -ald .*'             # List hidden files only
-alias lsd='ls -Gl | grep ^d'       # Only list directories
-alias lsd.='ls -Gal | grep ^d'     # Only list directories, including hidden ones
+alias lsd='ls -dlG */'             # Only list directories
+alias lsd.='ls -dlG .*/ */'        # Only list directories, including hidden ones
 alias lsbd='ls -thor'              # List dir contents by modified date
 alias lscf='/bin/ls -rt|tail -n1'  # Last changed file
 alias ls-tree='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\''' # List as tree
@@ -54,10 +57,10 @@ alias nbmw="clear && nodemon -e js,json,jsx,ejs,coffee . | bunyan -l warn"
 alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 
 # Updating
-alias bup='brew update && brew upgrade && brew cleanup' # Homebrew
-alias gup='gem update && gem cleanup'                   # Ruby gems
-alias nup='npm update -g'                               # NPM
-alias osxup='sudo softwareupdate -ia'                   # OS X
+alias bup='brew update && brew upgrade && brew cleanup && brew cask cleanup' # Homebrew
+alias gup='gem update && gem cleanup'                                        # Ruby gems
+alias nup='npm update -g'                                                    # NPM
+alias osxup='sudo softwareupdate -ia'                                        # OS X
 alias allup='gup && nup && bup'
 
 # Drupal
