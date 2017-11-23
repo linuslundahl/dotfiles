@@ -47,17 +47,17 @@ brew "heroku"
 brew "lua"
 brew "highlight"
 brew "jemalloc"
+brew "sqlite"
+brew "xz"
+brew "python3"
 brew "nghttp2"
 brew "pcre"
-brew "httpd", restart_service: true
 brew "httpstat"
 brew "hub"
 brew "libtool"
-brew "xz"
 brew "imagemagick"
 brew "oniguruma"
 brew "jq"
-brew "sqlite"
 brew "python"
 brew "libssh2"
 brew "libxml2"
@@ -75,12 +75,14 @@ brew "openssl@1.1"
 brew "pkg-config"
 brew "pngquant"
 brew "pv"
+brew "ripgrep"
 brew "rtmpdump"
 brew "shellcheck"
 brew "spark"
 brew "svtplay-dl"
 brew "switchaudio-osx"
 brew "terminal-notifier"
+brew "tldr"
 brew "todolist"
 brew "tokyo-cabinet"
 brew "tree"
@@ -88,6 +90,7 @@ brew "unar"
 brew "unixodbc"
 brew "unrar"
 brew "wget"
+brew "wpcli-completion"
 brew "yarn"
 brew "youtube-dl"
 brew "zsh"
@@ -120,7 +123,6 @@ cask "daisydisk"
 cask "dash"
 cask "day-o"
 cask "discord"
-cask "disk-drill"
 cask "fanny"
 cask "fission"
 cask "fliqlo"
@@ -181,38 +183,47 @@ cask "whatsapp"
 cask "whiskey"
 cask "wkhtmltopdf"
 cask "caskroom/fonts/font-fira-code"
+cask "caskroom/fonts/font-inter-ui"
 cask "caskroom/fonts/font-iosevka"
 cask "caskroom/fonts/font-lato"
+cask "caskroom/fonts/font-metropolis"
 cask "caskroom/fonts/font-mononoki"
 cask "caskroom/fonts/font-ubuntu"
 cask "caskroom/versions/atom-beta"
 cask "caskroom/versions/dropbox-beta"
 cask "caskroom/versions/firefox-beta"
+cask "caskroom/versions/github-beta"
 cask "caskroom/versions/google-chrome-canary"
 cask "caskroom/versions/iterm2-beta"
+cask "caskroom/versions/sketch-beta"
 cask "caskroom/versions/slack-beta"
 cask "caskroom/versions/telegram-alpha"
 mas "1Blocker", id: 1107421413
 mas "1Password", id: 443987910
 mas "Airmail 3", id: 918858936
+mas "App Cleaner", id: 1013897218
 mas "Bear", id: 1091189122
 mas "Boom 2", id: 948176063
+mas "Boxy", id: 1053031090
 mas "Calcbot", id: 931657367
 mas "Cardhop", id: 1290358394
+mas "Cashew", id: 1126100185
 mas "Characters", id: 536511979
 mas "Clean Text", id: 414782261
 mas "Clear", id: 504544917
 mas "CloudApp", id: 417602904
-mas "Copied", id: 1026349850
 mas "Currencier", id: 1150106962
 mas "Declutter", id: 950644971
 mas "Deliveries", id: 924726344
+mas "Doom 3", id: 475362810
 mas "Duo", id: 777886035
 mas "Fantastical 2", id: 975937182
 mas "FilePane", id: 847515307
+mas "Filters for Photos", id: 1083965373
 mas "GAget", id: 968487158
 mas "GIF Brewery 3", id: 1081413713
 mas "Grids for Instagram", id: 916198600
+mas "HazeOver", id: 430798174
 mas "ImageGlitch", id: 417423725
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
@@ -233,9 +244,11 @@ mas "PopClip", id: 445189367
 mas "Radium", id: 597611879
 mas "ReadKit", id: 588726889
 mas "Reeder", id: 880001334
+mas "ShottyBlur", id: 1117371566
 mas "Simplify", id: 448003584
 mas "SnippetsLab", id: 1006087419
 mas "Tag", id: 506232966
+mas "The Unarchiver", id: 425424353
 mas "Things3", id: 904280696
 mas "Tiny Audio Converter", id: 1020933010
 mas "Trello", id: 1278508951
@@ -243,5 +256,6 @@ mas "Tweetbot", id: 557168941
 mas "Typeeto", id: 970502923
 mas "Unsplash Wallpapers", id: 1284863847
 mas "VOX", id: 461369673
+mas "Wallpaper Wizard", id: 1266674560
 mas "Xcode", id: 497799835
 mas "xScope", id: 889428659

@@ -36,8 +36,8 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications --fontdir=/Library/Fonts"
 # Bash completion
 autoload bashcompinit
 bashcompinit
-. /usr/local/etc/bash_completion.d/wp-completion.bash
-# . /usr/local/etc/bash_completion.d/youtube-dl.bash-completion
+. /usr/local/etc/bash_completion.d/wp
+. /usr/local/etc/bash_completion.d/youtube-dl.bash-completion
 # fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Node
