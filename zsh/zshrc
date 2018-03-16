@@ -1,13 +1,23 @@
 #!/bin/sh
 
-# ssh-add -K ~/.ssh/id_rsa
-
 export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
 # shellcheck source=$HOME/.zim/init.zsh
 [ -f ${ZIM_HOME}/init.zsh ] && . ${ZIM_HOME}/init.zsh
 
 zstyle ':vcs_info:git:*:-all-' command =git
+
+# . <(antibody init)
+# antibody bundle < ~/.zsh_plugins
+#
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
+#
+# zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+# export CLICOLOR=1
+#
+# # shellcheck source=$HOME/dotfiles/zsh/history
+# [ -f $HOME/dotfiles/zsh/history ] && . $HOME/dotfiles/zsh/history
 
 # Paths
 export PATH
@@ -27,28 +37,104 @@ export GOPATH=$HOME/go
 [ -z "$PROJECT_DIR" ] && export PROJECT_DIR=~/Sites
 
 # Set Atom as default editor
-export EDITOR="atom-beta"
+export EDITOR="atom"
 export ATOM_PATH="/Applications"
 
 # Set homebew cask options
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --fontdir=/Library/Fonts"
 
-# Bash completion
-autoload bashcompinit
-bashcompinit
-. /usr/local/etc/bash_completion.d/wp
-. /usr/local/etc/bash_completion.d/youtube-dl.bash-completion
-# fpath=(/usr/local/share/zsh-completions $fpath)
-
 # Node
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="${HOME}/.nvm"
 export NODE_ENV="development"
 
-# shellcheck source=/usr/local/opt/nvm/nvm.sh
+# shellcheck source=$NVM_DIR/nvm.sj
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# shellcheck source=$NVM_DIR/bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# shellcheck source=$HOME/usr/local/opt/nvm/nvm.sh
 . "$(brew --prefix nvm)/nvm.sh"
+
+autoload -U add-zsh-hook
+loadNvmrc () {
+  node_version="$(nvm version)"
+  nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd loadNvmrc
+loadNvmrc
+
+# Bash completion
+# autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+# shellcheck source=$HOME/usr/local/etc/bash_completion.d/wp
+[ -f "`brew --prefix`/etc/bash_completion.d/wp" ] && . "`brew --prefix`/etc/bash_completion.d/wp"
+# shellcheck source=$HOME/usr/local/dotfiles/zsh/aliases
+[ -f "`brew --prefix`/etc/bash_completion.d/youtube-dl.bash-completion" ] && . "`brew --prefix`/etc/bash_completion.d/youtube-dl.bash-completion"
 
 # shellcheck source=$HOME/dotfiles/zsh/aliases
 [ -f $HOME/dotfiles/zsh/aliases ] && . $HOME/dotfiles/zsh/aliases
 
 # shellcheck source=$HOME/dotfiles/zsh/functions
 [ -f $HOME/dotfiles/zsh/functions ] && . $HOME/dotfiles/zsh/functions
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
+
+# shellcheck disable=SC2034,SC2039
+SPACESHIP_PROMPT_ORDER=(
+  time
+  git
+  node
+  golang
+  php
+  # ruby
+  # xcode
+  # swift
+  # docker
+  # venv
+  # pyenv
+  jobs
+  battery
+  exec_time
+  exit_code
+  line_sep
+  vi_mode
+  user
+  host
+  dir
+  char
+)
+
+# shellcheck disable=SC2034
+# SPACESHIP_CHAR_SYMBOL='⚡'
+# shellcheck disable=SC2034
+SPACESHIP_BATTERY_SHOW=true
+# shellcheck disable=SC2034
+SPACESHIP_PROMPT_PREFIXES_SHOW=true
+# shellcheck disable=SC2034
+SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
+# shellcheck disable=SC2034
+SPACESHIP_TIME_SHOW=true
+# shellcheck disable=SC2034
+SPACESHIP_EXIT_CODE_SHOW=true
+# shellcheck disable=SC2034
+SPACESHIP_DIR_PREFIX=''
+# shellcheck disable=SC2034
+SPACESHIP_EXEC_TIME_ELAPSED='1'
+
+# Clear the screen buffer (mostly for a cleaner iTerm restored session)
+clear && printf '\e[3J'
