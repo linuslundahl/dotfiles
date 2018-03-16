@@ -27,3 +27,7 @@ Thumbs.db
 
 ### CodeKit ###
 codekit-config.json
+
+### NPM / Yarn ###
+yarn-error.log
+npm-debug.log
