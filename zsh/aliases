@@ -20,6 +20,8 @@ alias o='open .'
 alias g="grep -r -i"
 alias cp="cp -rv"
 alias edit='atom-beta'
+
+# Work
 alias consul-start='consul agent -server -data-dir . -bootstrap-expect 1 -ui -advertise 127.0.0.1'
 
 # Listing
@@ -37,12 +39,12 @@ alias ze='subl $HOME/.zshrc'
 alias to_bash='chsh -s "$(which bash)"'
 
 # Drush
-alias d='drush -y'
-alias dcc='drush cc all && date +"%T" && terminal-notifier -message "Drupal cache cleared"'
-alias ddl='drush pm-download'
-alias dun='drush pm-uninstall'
-alias den='drush pm-enable'
-alias dsolr='drush solr-delete-index | drush solr-index && terminal-notifier -message "Solr re-indexed"'
+# alias d='drush -y'
+# alias dcc='drush cc all && date +"%T" && terminal-notifier -message "Drupal cache cleared"'
+# alias ddl='drush pm-download'
+# alias dun='drush pm-uninstall'
+# alias den='drush pm-enable'
+# alias dsolr='drush solr-delete-index | drush solr-index && terminal-notifier -message "Solr re-indexed"'
 
 # Bower
 alias bower='noglob bower'
@@ -52,6 +54,8 @@ alias nb="clear && node . | bunyan"
 alias nm="clear && nodemon -e js,json,jsx,ejs,coffee ."
 alias nbm="clear && nodemon -e js,json,jsx,ejs,coffee . | bunyan"
 alias nbmw="clear && nodemon -e js,json,jsx,ejs,coffee . | bunyan -l warn"
+alias npmplease="rm -rf node_modules/ && rm -f package-lock.json && npm install"
+alias neslint="./node_modules/.bin/eslint --ext .js --ext .jsx"
 
 # Simple Python server
 alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
