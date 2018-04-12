@@ -7,18 +7,6 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
 zstyle ':vcs_info:git:*:-all-' command =git
 
-# . <(antibody init)
-# antibody bundle < ~/.zsh_plugins
-#
-# bindkey '^[[A' history-substring-search-up
-# bindkey '^[[B' history-substring-search-down
-#
-# zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-# export CLICOLOR=1
-#
-# # shellcheck source=$HOME/dotfiles/zsh/history
-# [ -f $HOME/dotfiles/zsh/history ] && . $HOME/dotfiles/zsh/history
-
 # Paths
 export PATH
 PATH="/usr/local/bin:$PATH"
@@ -27,8 +15,8 @@ PATH="/usr/local/opt/go/libexec/bin:$PATH"
 PATH="$HOME/dotfiles/bin:$PATH"
 PATH="$HOME/dotfiles/apps/bin:$PATH"
 
-# Use PHP71
-PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
+# Use PHP72
+PATH="$(brew --prefix php)/bin:$PATH"
 
 # Go path
 export GOPATH=$HOME/go
@@ -137,4 +125,9 @@ SPACESHIP_DIR_PREFIX=''
 SPACESHIP_EXEC_TIME_ELAPSED='1'
 
 # Clear the screen buffer (mostly for a cleaner iTerm restored session)
-clear && printf '\e[3J'
+# clear && printf '\e[3J'
+
+# add this configuration to ~/.zshrc
+export HISTFILE=~/.zhistory     # ensure history file visibility
+export HH_CONFIG=hicolor        # get more colors
+bindkey -s "\C-r" "\eqhh\n"     # bind hh to Ctrl-r (for Vi mode check doc)

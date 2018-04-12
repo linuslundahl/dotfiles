@@ -3,7 +3,7 @@
 	email = lundahl.linus@gmail.com
 
 [core]
-	editor = atom-beta
+	editor = atom-beta --wait
 	excludesfile = ~/.gitignore
 	quotepath = false
 
@@ -21,6 +21,7 @@
 	ksshow   = "!sh -c 'SHA=${1:-HEAD}; git difftool -y -t Kaleidoscope $SHA^..$SHA;' -"
 	ksdiff   = difftool -y -t Kaleidoscope
 	ssh      = !git-ssh $1
+	open     = !atom-beta `git-open`
 	latest   = for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'
 	recap    = log --since=\"00:00:00\" --no-merges --oneline --author=<lundahl.linus@gmail.com>
 
@@ -69,6 +70,9 @@
 
 [merge]
 	tool = Kaleidoscope
+
+[fetch]
+	prune = true
 
 [filter "media"]
 	required = true
