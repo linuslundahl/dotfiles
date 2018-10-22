@@ -1,5 +1,8 @@
 #!/bin/sh
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
 # shellcheck source=$HOME/.zim/init.zsh
@@ -10,10 +13,12 @@ zstyle ':vcs_info:git:*:-all-' command =git
 # Paths
 export PATH
 PATH="/usr/local/bin:$PATH"
+PATH="/usr/local/sbin:$PATH"
 PATH="$HOME/go/bin:$PATH"
 PATH="/usr/local/opt/go/libexec/bin:$PATH"
 PATH="$HOME/dotfiles/bin:$PATH"
 PATH="$HOME/dotfiles/apps/bin:$PATH"
+PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # Use PHP72
 PATH="$(brew --prefix php)/bin:$PATH"
@@ -35,13 +40,13 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications --fontdir=/Library/Fonts"
 export NVM_DIR="${HOME}/.nvm"
 export NODE_ENV="development"
 
-# shellcheck source=$NVM_DIR/nvm.sj
+# Fastlane
+export PATH="$HOME/.fastlane/bin:$PATH"
+
+# shellcheck source=$NVM_DIR/nvm.sh
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 # shellcheck source=$NVM_DIR/bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
-# shellcheck source=$HOME/usr/local/opt/nvm/nvm.sh
-. "$(brew --prefix nvm)/nvm.sh"
 
 autoload -U add-zsh-hook
 loadNvmrc () {
@@ -124,10 +129,12 @@ SPACESHIP_DIR_PREFIX=''
 # shellcheck disable=SC2034
 SPACESHIP_EXEC_TIME_ELAPSED='1'
 
-# Clear the screen buffer (mostly for a cleaner iTerm restored session)
-# clear && printf '\e[3J'
-
 # add this configuration to ~/.zshrc
 export HISTFILE=~/.zhistory     # ensure history file visibility
 export HH_CONFIG=hicolor        # get more colors
 bindkey -s "\C-r" "\eqhh\n"     # bind hh to Ctrl-r (for Vi mode check doc)
+
+# Clear the screen buffer (mostly for a cleaner iTerm restored session)
+# clear && printf '\e[3J'
+
+source $HOME/dotfiles/zsh/tokens

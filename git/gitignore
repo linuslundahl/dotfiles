@@ -4,6 +4,10 @@
 # SublimeText project files
 *.sublime-workspace
 
+### Visual Studio Code ###
+# VSCode project files
+.vscode/
+
 ### SASS ###
 ### SASS Ignores - "Sassy CSS" http://sass-lang.com/
 *.sass-cache

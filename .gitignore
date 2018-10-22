@@ -2,3 +2,5 @@ apps
 Caskroom
 old
 php/PHP-Error
+zsh/tokens
+.vscode

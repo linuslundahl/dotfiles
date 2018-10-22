@@ -3,12 +3,15 @@
 	email = lundahl.linus@gmail.com
 
 [core]
-	editor = atom-beta --wait
+	editor = code --wait
 	excludesfile = ~/.gitignore
 	quotepath = false
 
 [github]
 	user = linuslundahl
+
+[credential "https://github.com"]
+	username = linuslundahl
 
 [alias]
 	cleanup  = "!f() { git branch --merged | grep -v '*' | xargs -n 1 git branch -d; }; f"
@@ -87,3 +90,6 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/

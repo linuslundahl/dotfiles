@@ -19,7 +19,7 @@ alias c='clear'
 alias o='open .'
 alias g="grep -r -i"
 alias cp="cp -rv"
-alias edit='atom-beta'
+alias edit='code'
 
 # Work
 alias consul-start='consul agent -server -data-dir . -bootstrap-expect 1 -ui -advertise 127.0.0.1'
@@ -54,6 +54,7 @@ alias nb="clear && node . | bunyan"
 alias nm="clear && nodemon -e js,json,jsx,ejs,coffee ."
 alias nbm="clear && nodemon -e js,json,jsx,ejs,coffee . | bunyan"
 alias nbmw="clear && nodemon -e js,json,jsx,ejs,coffee . | bunyan -l warn"
+alias nbmd="clear && nodemon -e js,json,jsx,ejs,coffee . | bunyan -l debug"
 alias npmplease="rm -rf node_modules/ && rm -f package-lock.json && npm install"
 alias neslint="./node_modules/.bin/eslint --ext .js --ext .jsx"
 
@@ -61,10 +62,10 @@ alias neslint="./node_modules/.bin/eslint --ext .js --ext .jsx"
 alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 
 # Updating
-alias bup='brew update && brew upgrade && brew cleanup && brew cask cleanup' # Homebrew
-alias gup='gem update && gem cleanup'                                        # Ruby gems
-alias nup='npm update -g'                                                    # NPM
-alias osxup='sudo softwareupdate -ia'                                        # OS X
+alias bup='brew update && brew upgrade && brew cleanup' # Homebrew
+alias gup='gem update && gem cleanup'                   # Ruby gems
+alias nup='npm update -g'                               # NPM
+alias osxup='sudo softwareupdate -ia'                   # OS X
 alias allup='gup && nup && bup'
 
 # Drupal
