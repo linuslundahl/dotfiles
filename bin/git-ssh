@@ -14,21 +14,21 @@
 # Now use: git ssh REMOTE
 #
 
-RED=`tput setaf 1`
-GREEN=`tput setaf 2`
-RESET=`tput sgr0`
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+RESET=$(tput sgr0)
 
 if [ $# -eq 0 ];then
   echo "No arguments found, trying with '${GREEN}live${RESET}'."
   set live
 fi
 
-REMOTE=$(git config --get remote.${1}.url);
+REMOTE=$(git config --get remote."${1}".url);
 
 if [ "$REMOTE" != "" ];then
   echo "Connecting to ${GREEN}${REMOTE}${RESET}"
-  read SERVER SERVER_PATH <<<$(IFS=":"; echo $REMOTE)
-  ssh -t $SERVER "cd $SERVER_PATH; exec bash -l"
+  IFS=":" read -r SERVER SERVER_PATH <<<"$REMOTE"
+  ssh -t "$SERVER" "cd $SERVER_PATH; exec bash -l"
 else
   echo "${RED}No remote found.${RESET}"
 fi
