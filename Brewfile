@@ -38,10 +38,12 @@ brew "cmake"
 brew "cocoapods"
 brew "composer"
 brew "consul"
+brew "curl", args: ["with-openssl"]
 brew "jansson"
+brew "jemalloc"
 brew "libev"
 brew "libevent"
-brew "curl", args: ["with-nghttp2"]
+brew "nghttp2"
 brew "dnsmasq", restart_service: true
 brew "exa"
 brew "fdupes"
@@ -56,10 +58,8 @@ brew "giflossy"
 brew "git"
 brew "go"
 brew "icu4c"
-brew "hh"
 brew "highlight"
-brew "jemalloc"
-brew "nghttp2"
+brew "hstr"
 brew "httpstat"
 brew "hub"
 brew "oniguruma"
@@ -104,6 +104,7 @@ brew "wp-cli-completion"
 brew "yarn", args: ["without-node"]
 brew "youtube-dl"
 brew "zsh"
+brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "getantibody/tap/antibody"
 brew "heroku/brew/heroku"
@@ -114,6 +115,7 @@ brew "sydsvenskan/tap/cgateway"
 brew "sydsvenskan/tap/demoenv"
 cask "airfoil"
 cask "alfred"
+cask "android-studio"
 cask "anybar"
 cask "appdelete"
 cask "atext"
@@ -169,14 +171,18 @@ cask "gog-galaxy"
 cask "google-chrome"
 cask "google-chrome-canary"
 cask "graphiql"
+cask "hammerspoon"
+cask "handbrake"
 cask "highsierramediakeyenabler"
 cask "hyper"
 cask "iina"
 cask "imageoptim"
 cask "iterm2-beta"
+cask "java8"
 cask "kaleidoscope"
 cask "kap"
 cask "karabiner-elements"
+cask "keka"
 cask "keybase"
 cask "keycastr"
 cask "launchbar"
@@ -203,13 +209,13 @@ cask "rcdefaultapp"
 cask "react-native-debugger"
 cask "reactotron"
 cask "remote-play"
-cask "rightfont"
 cask "rocket"
 cask "rowanj-gitx"
 cask "screens-connect"
 cask "script-debugger"
 cask "selfcontrol"
 cask "sequel-pro"
+cask "shifty"
 cask "shortcat"
 cask "silverlight"
 cask "sip"
@@ -239,13 +245,14 @@ cask "whiskey"
 cask "wkhtmltopdf"
 cask "zeplin"
 mas "1Blocker", id: 1107421413
-mas "Agenda", id: 1287445660
+mas "AdGuard for Safari", id: 1440147259
 mas "Airmail 3", id: 918858936
 mas "AirSketch", id: 1286744480
 mas "AppTrack", id: 1303655973
 mas "Bear", id: 1091189122
 mas "Boom 2", id: 948176063
 mas "Boxy", id: 1053031090
+mas "Breaks for Eyes", id: 1439431081
 mas "Calcbot", id: 931657367
 mas "Cardhop", id: 1290358394
 mas "Cashew", id: 1126100185
@@ -254,11 +261,8 @@ mas "Clean Text", id: 414782261
 mas "CleanerForXcode", id: 1296084683
 mas "Clear", id: 504544917
 mas "Clock mini", id: 867539680
-mas "CloudApp", id: 417602904
-mas "CloudMounter", id: 1130254674
 mas "Cornerstone", id: 1110740402
 mas "Currencier", id: 1150106962
-mas "DaftCloud", id: 1320450034
 mas "Declutter", id: 950644971
 mas "Deliveries", id: 924726344
 mas "Dropmark", id: 554314609
@@ -277,7 +281,7 @@ mas "Gifski", id: 1351639930
 mas "Grids for Instagram", id: 916198600
 mas "HazeOver", id: 430798174
 mas "ImageGlitch", id: 417423725
-mas "iMovie", id: 408981434
+mas "iStat Menus", id: 1319778037
 mas "JoystickMonitor", id: 1361339902
 mas "Keynote", id: 409183694
 mas "Letterpress", id: 1070543522
@@ -307,12 +311,12 @@ mas "Radium", id: 597611879
 mas "ReadKit", id: 588726889
 mas "Reeder", id: 880001334
 mas "Renamer", id: 402286241
-mas "RetroClip", id: 1332064978
 mas "Shotty", id: 1250306151
 mas "ShottyBlur", id: 1117371566
 mas "Simplify", id: 448003584
 mas "SnippetsLab", id: 1006087419
 mas "Space Age", id: 959797548
+mas "SubEthaEdit", id: 728530824
 mas "Table Tool", id: 1122008420
 mas "Tag", id: 506232966
 mas "The Unarchiver", id: 425424353

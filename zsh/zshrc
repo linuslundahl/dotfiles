@@ -10,6 +10,8 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
 zstyle ':vcs_info:git:*:-all-' command =git
 
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # Paths
 export PATH
 PATH="/usr/local/bin:$PATH"
