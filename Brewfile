@@ -1,4 +1,5 @@
 tap "denisidoro/tools"
+tap "github/gh"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -31,6 +32,7 @@ brew "htop"
 brew "httpd", restart_service: true
 brew "httpie"
 brew "hub"
+brew "ical-buddy"
 brew "jq"
 brew "mariadb", restart_service: true
 brew "mas"
@@ -54,6 +56,7 @@ brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "denisidoro/tools/navi"
+brew "github/gh/gh"
 brew "heroku/brew/heroku"
 brew "isacikgoz/gitin/gitin"
 brew "rigellute/tap/spotify-tui"
@@ -66,10 +69,14 @@ cask "anybar"
 cask "appdelete"
 cask "applepi-baker"
 cask "audio-hijack"
+cask "autumn"
+cask "bartender"
 cask "beardedspice"
+cask "bettertouchtool"
 cask "bitbar"
 cask "blender"
 cask "boxer"
+cask "brave-browser"
 cask "caprine"
 cask "caption"
 cask "choosy"
@@ -87,6 +94,7 @@ cask "fission"
 cask "fliqlo"
 cask "flotato"
 cask "fluid"
+cask "flume"
 cask "flux"
 cask "fman"
 cask "fog"
@@ -98,6 +106,7 @@ cask "font-hasklig"
 cask "font-ibm-plex"
 cask "font-inter-ui"
 cask "font-iosevka"
+cask "font-jetbrains-mono"
 cask "font-lato"
 cask "font-metropolis"
 cask "font-mononoki"
@@ -115,9 +124,11 @@ cask "hyper"
 cask "iconjar"
 cask "iina"
 cask "imageoptim"
+cask "insomnia"
 cask "iterm2-beta"
 cask "kaleidoscope"
 cask "kap"
+cask "karabiner-elements"
 cask "keybase"
 cask "keycastr"
 cask "launchbar"
@@ -126,7 +137,6 @@ cask "maccy"
 cask "macdown"
 cask "macmediakeyforwarder"
 cask "motrix"
-cask "neo4j"
 cask "netnewswire"
 cask "numi"
 cask "openemu"
@@ -148,6 +158,7 @@ cask "rocket"
 cask "rowanj-gitx"
 cask "runjs"
 cask "screens-connect"
+cask "sensei"
 cask "sequel-pro"
 cask "shortcat"
 cask "sip"
@@ -161,6 +172,7 @@ cask "sublime-text"
 cask "superduper"
 cask "suspicious-package"
 cask "swiftdefaultappsprefpane"
+cask "swish"
 cask "telegram-alpha"
 cask "textbar"
 cask "touchswitcher"
@@ -177,6 +189,8 @@ cask "vlc"
 cask "webpquicklook"
 cask "workbench"
 cask "zeplin"
+cask "zoomus"
+mas "1440", id: 1483764819
 mas "1Blocker", id: 1107421413
 mas "Airmail", id: 918858936
 mas "Backtrack", id: 1477089520
@@ -208,6 +222,7 @@ mas "Gapplin", id: 768053424
 mas "Gemini 2", id: 1090488118
 mas "Grindstone", id: 1476307705
 mas "HazeOver", id: 430798174
+mas "Instapaper", id: 1481302432
 mas "iStat Menus", id: 1319778037
 mas "Keynote", id: 409183694
 mas "LightCapture", id: 1175859707
@@ -230,6 +245,7 @@ mas "Pretty Regular Expressions", id: 1206979893
 mas "Reeder", id: 1449412482
 mas "Renamer", id: 402286241
 mas "Sandkorn", id: 1377973524
+mas "Save to Pocket", id: 1477385213
 mas "Screens", id: 446107677
 mas "ShiftCase", id: 1451459367
 mas "SnippetsLab", id: 1006087419
