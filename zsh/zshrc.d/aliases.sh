@@ -10,7 +10,6 @@ alias givaktbot='cd ~/Sites/_tools/bot/ && ~/Sites/_tools/gobot/bin/hubot --name
 # alias progressive="identify -verbose $1 | grep Interlace"
 alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 alias fuck='$(thefuck $(fc -ln -1))'
-alias mff='curl https://malmo-ff.unwi.se'
 alias op-ll='eval $(op signin linuslundahl)'
 alias op-hds='eval $(op signin hdsit)'
 alias cat='ccat'

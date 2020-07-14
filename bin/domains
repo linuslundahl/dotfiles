@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+domains=("$@")
+for i in "${domains[@]}"; do
+    echo "$i: $(dig +short a $i | tail -n1)"
+done

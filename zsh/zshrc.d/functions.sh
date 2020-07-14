@@ -150,8 +150,12 @@ treelist() { tree -I ".git|node_modules|bower_components|.sass-cache|.DS_Store" 
 # List with size
 lssize() { du -sk -- * | sort -n | perl -pe \''@SI=qw(K M G T P); s:^(\d+?)((\d\d\d)*)\s:$1." ".$SI[((length $2)/3)]."\t":e'\'; }
 
-ringtone() { afconvert "$1" "${1%.*}.m4r" -f m4af; }
+# ringtone() { afconvert "$1" "${1%.*}.m4r" -f m4af; }
+ringtone() { ffmpeg -i "$1" -aq 2 "${1%.*}.m4a" && mv "${1%.*}.m4a" "${1%.*}.m4r"; }
+ringtones() { for i in *.mp3; do ringtone "$i"; done }
 gif2webm() { ffmpeg -i "$1" -b:v 600K -qmin 0 -qmax 50 -crf 5 "$2"; }
 giflossy2() { gifsicle -O3 --lossy=80 -o "$2" "$1"; }
 
 killports() { lsof -i tcp:"$1" | awk 'NR!=1 {print $2}' | xargs kill -9; }
+
+mff() { curl "https://malmo-ff.unwi.se/$1"; }
